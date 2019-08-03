@@ -3,5 +3,19 @@
     <con:coreEntry>
         <con:binding type="SOAP" xsi:type="con:AnyWsdlSoapBindingType"/>
     </con:coreEntry>
-    <con:router/>
+    <con:router>
+        <con:flow>
+            <con:template-branch-node type="operation" id="_FlowId-N3f57ff9c.N151764ad.0.16c57337807.N8000" name="CustomerOperation">
+                <con:context/>
+                <con:branch-table>
+                    <con:main-branch>
+                        <con:flow/>
+                    </con:main-branch>
+                    <con:default-branch>
+                        <con:flow/>
+                    </con:default-branch>
+                </con:branch-table>
+            </con:template-branch-node>
+        </con:flow>
+    </con:router>
 </con:templateEntry>
