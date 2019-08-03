@@ -97,7 +97,7 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SVGONUGU-LAP:8088/CreateUserID</con:endpoint></con:endpoints><con:operation isOneWay="false" action="CreateUniqueId" name="create_uniqueid" bindingOperationName="create_uniqueid" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="25c5f4d2-a908-4385-b74d-27d77c142cfe"><con:settings/><con:call name="Request 1" id="5fe7ac76-1237-4237-a0c1-42094a09ff4b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/CreateUserID</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xyzbank:cust:schema:userid">
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://ADMIN-365PLSP9N:8088/CreateUserID</con:endpoint><con:endpoint>http://SVGONUGU-LAP:8088/CreateUserID</con:endpoint></con:endpoints><con:operation isOneWay="false" action="CreateUniqueId" name="create_uniqueid" bindingOperationName="create_uniqueid" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="25c5f4d2-a908-4385-b74d-27d77c142cfe"><con:settings/><con:call name="Request 1" id="5fe7ac76-1237-4237-a0c1-42094a09ff4b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/CreateUserID</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xyzbank:cust:schema:userid">
    <soapenv:Header/>
    <soapenv:Body>
       <urn:user_input>
@@ -786,20 +786,7 @@ xmlns:urn="urn:xyzbank:cust:schema:account">
          <customer_id>?</customer_id>
       </urn:customerid_input>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://xmlns.xyzbank.com/wsdl/Customer/GetCustomerInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService port="8088" path="/CreateUserID" host="localhost" name="CreateUserID" id="88ce131d-6945-45ac-8967-7591d1959fd2" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="create_uniqueid" interface="userid_binding" operation="create_uniqueid" id="d807f807-b38a-4744-8270-74f923a9157a"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" httpResponseStatus="500" encoding="UTF-8" id="e77d6a6c-013a-4070-81e3-94de6c0efef6"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-  <soapenv:Body>
-    <soapenv:Fault>
-      <faultcode>fgfnnnbnbbbnbnb</faultcode>
-      <faultstring>ghjgjh</faultstring>
-      <!--Optional:-->
-      <faultactor>?</faultactor>
-      <!--Optional:-->
-      <detail>
-        <err> error message from </err>
-      </detail>
-    </soapenv:Fault>
-  </soapenv:Body>
-</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="CreateUniqueId"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:mockService port="8088" path="/CustomerService" host="localhost" name="CustomerService" id="7131daf9-960c-42ae-8a63-1600a6b9717a" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">true</con:setting></con:settings><con:properties/><con:mockOperation name="create_customer" interface="customer_service_binding" operation="create_customer" id="b973d91e-c5a2-4a8b-817a-f6730ec33a5c"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" httpResponseStatus="200" encoding="UTF-8" id="b6825e1f-6226-4c66-b6de-cc3b6c5f728c"><con:settings><con:setting id="com.eviware.soapui.settings.CommonSettings@entitizeProperties">false</con:setting></con:settings><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xyzbank:cust:schema:customer">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://xmlns.xyzbank.com/wsdl/Customer/GetCustomerInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService port="8088" path="/CustomerService" host="localhost" name="CustomerService" id="7131daf9-960c-42ae-8a63-1600a6b9717a" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">true</con:setting></con:settings><con:properties/><con:mockOperation name="create_customer" interface="customer_service_binding" operation="create_customer" id="b973d91e-c5a2-4a8b-817a-f6730ec33a5c"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" httpResponseStatus="200" encoding="UTF-8" id="b6825e1f-6226-4c66-b6de-cc3b6c5f728c"><con:settings><con:setting id="com.eviware.soapui.settings.CommonSettings@entitizeProperties">false</con:setting></con:settings><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xyzbank:cust:schema:customer">
   <soapenv:Header/>
     <soapenv:Body>
       <urn:status_msg>
@@ -938,4 +925,13 @@ xmlns:urn="urn:xyzbank:cust:schema:order">
       </detail>
     </soapenv:Fault>
   </soapenv:Body>
-</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://xmlns.xyzbank.com/wsdl/Customer/GetCustomerInfo"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://xmlns.xyzbank.com/wsdl/Customer/GetCustomerInfo"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:mockService id="cff0921c-da4d-4e09-96e8-2c7a2a4cab07" port="8088" path="/CreateUserID" host="localhost" name="CreateUserID" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="create_uniqueid" id="f46a399c-b26d-4226-bea7-a9afe46a47b1" interface="userid_binding" operation="create_uniqueid"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="1bfe7404-7800-43b1-8517-9e03c0008518" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:xyzbank:cust:schema:userid">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:user_output>
+         <unique_user_id>123456</unique_user_id>
+         <!--Optional:-->
+         <status>S</status>
+      </urn:user_output>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="CreateUniqueId"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
