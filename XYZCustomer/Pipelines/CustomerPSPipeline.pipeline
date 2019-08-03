@@ -129,6 +129,7 @@
                                     <con:stage id="_StageId-N3f57ff9c.N151764ad.0.16c57337807.N7ec0" name="Defaulting">
                                         <con:context>
                                             <con1:userNsDecl prefix="cus" namespace="http://xmlns.xyzbank.com/schema/Customer" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                                            <con1:userNsDecl prefix="con" namespace="http://www.bea.com/wli/sb/services/security/config" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
                                         </con:context>
                                         <con:actions>
                                             <con1:ifThenElse xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
@@ -149,6 +150,55 @@
                                                             </con1:expr>
                                                         </con1:insert>
                                                     </con1:actions>
+                                                </con1:case>
+                                            </con1:ifThenElse>
+                                            <con1:wsCallout xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                                                <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57ff9c.N151764ad.0.16c57337807.N7e48</con2:id>
+                                                <con1:service ref="XYZCommon/BusinessServices/CreateUserIDBS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                                                <con1:operation>create_uniqueid</con1:operation>
+                                                <con1:request>
+                                                    <con1:body wrapped="false">userIDReq</con1:body>
+                                                    <con1:header>userIDReqHdr</con1:header>
+                                                </con1:request>
+                                                <con1:response>
+                                                    <con1:body wrapped="false">userIDResp</con1:body>
+                                                </con1:response>
+                                                <con1:requestTransform>
+                                                    <con1:assign varName="varSA">
+                                                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57ff9c.N151764ad.0.16c57337807.N7e45</con2:id>
+                                                        <con1:expr>
+                                                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">fn-bea:lookupBasicCredentials('XYZCustomer/Utilities/UserIDSvcCred')</con2:xqueryText>
+                                                        </con1:expr>
+                                                    </con1:assign>
+                                                    <con1:assign varName="userIDReqHdr">
+                                                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57ff9c.N151764ad.0.16c57337807.N7e42</con2:id>
+                                                        <con1:expr>
+                                                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config"><![CDATA[<soap-env:Header>
+<usr:UserIDConfiguration xmlns:usr="urn:xyzbank:cust:schema:userid">
+<usr:UserName>{$varSA/con:username/text()}</usr:UserName>
+<usr:Password>{$varSA/con:password/text()}</usr:Password>
+</usr:UserIDConfiguration>
+</soap-env:Header>]]></con2:xqueryText>
+                                                        </con1:expr>
+                                                    </con1:assign>
+                                                    <con1:assign varName="userIDRed">
+                                                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57ff9c.N151764ad.0.16c57337807.N7e3f</con2:id>
+                                                        <con1:expr>
+                                                            <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">&lt;usr:user_input xmlns:usr="urn:xyzbank:cust:schema:userid">
+&lt;usr:system>LEGACY&lt;/usr:system>
+&lt;/usr:user_input></con2:xqueryText>
+                                                        </con1:expr>
+                                                    </con1:assign>
+                                                </con1:requestTransform>
+                                                <con1:responseTransform/>
+                                            </con1:wsCallout>
+                                            <con1:ifThenElse xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                                                <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57ff9c.N151764ad.0.16c57337807.N7e38</con2:id>
+                                                <con1:case id="_BranchId-N3f57ff9c.N151764ad.0.16c57337807.N7e37">
+                                                    <con1:condition>
+                                                        <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">$userIDResp/Status/text()!='S'</con2:xqueryText>
+                                                    </con1:condition>
+                                                    <con1:actions/>
                                                 </con1:case>
                                             </con1:ifThenElse>
                                         </con:actions>
