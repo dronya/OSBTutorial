@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:templateEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<con:templateEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config">
     <con:coreEntry>
         <con:binding type="SOAP" xsi:type="con:AnyWsdlSoapBindingType"/>
     </con:coreEntry>
-    <con:router>
+    <con:router errorHandler="error-N3f57ff9c.N151764ad.0.16c57337807.N7f5b">
+        <con:pipeline type="request" name="request-N3f57ff9c.N151764ad.0.16c57337807.N7fff">
+            <con:stage id="_StageId-N3f57ff9c.N151764ad.0.16c57337807.N7ffd" name="Validation">
+                <con:context/>
+                <con:actions>
+                    <con1:validate>
+                        <con2:id>_ActionId-N3f57ff9c.N151764ad.0.16c57337807.N7ff9</con2:id>
+                        <con1:schema/>
+                        <con1:varName>body</con1:varName>
+                    </con1:validate>
+                    <con:placeholder-node id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7ff8"/>
+                </con:actions>
+            </con:stage>
+            <con:placeholder-node id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f60"/>
+        </con:pipeline>
+        <con:pipeline type="response" name="response-N3f57ff9c.N151764ad.0.16c57337807.N7ffe">
+            <con:placeholder-node id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f61"/>
+        </con:pipeline>
+        <con:pipeline type="error" name="error-N3f57ff9c.N151764ad.0.16c57337807.N7f5b">
+            <con:stage id="_StageId-N3f57ff9c.N151764ad.0.16c57337807.N7f5a" name="ErrorHandler">
+                <con:context/>
+                <con:actions/>
+            </con:stage>
+        </con:pipeline>
         <con:flow>
             <con:template-branch-node type="operation" id="_FlowId-N3f57ff9c.N151764ad.0.16c57337807.N8000" name="CustomerOperation">
                 <con:context/>
                 <con:branch-table>
                     <con:main-branch>
-                        <con:flow/>
+                        <con:flow>
+                            <con:pipeline-node name="PipelinePair">
+                                <con:request>request-N3f57ff9c.N151764ad.0.16c57337807.N7fff</con:request>
+                                <con:response>response-N3f57ff9c.N151764ad.0.16c57337807.N7ffe</con:response>
+                            </con:pipeline-node>
+                            <con:route-node id="_RouteId-N3f57ff9c.N151764ad.0.16c57337807.N7f5d" name="Route">
+                                <con:context/>
+                                <con:actions>
+                                    <con:placeholder-node id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f5c"/>
+                                </con:actions>
+                            </con:route-node>
+                        </con:flow>
                     </con:main-branch>
                     <con:default-branch>
                         <con:flow/>
