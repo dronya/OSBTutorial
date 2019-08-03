@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:coreEntry>
+        <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
+            <con:wsdl ref="XYZCustomer/WSDLs/CustomerPS"/>
+            <con:binding>
+                <con:name>CustomerServiceBinding</con:name>
+                <con:namespace>http://xmlns.xyzbank.com/wsdl/Customer</con:namespace>
+            </con:binding>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <con:template-overrides>
+            <con:template-branch-override id="_FlowId-N3f57ff9c.N151764ad.0.16c57337807.N8000">
+                <con:branch-node>
+                    <con:branch-table>
+                        <con:branch name="CreateCustomer">
+                            <con:operator>equals</con:operator>
+                            <con:value/>
+                            <con:template-overrides>
+                                <con:action-override id="_ActionId-N3f57ff9c.N151764ad.0.16c57337807.N7ff9">
+                                    <con1:validate xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                                        <con1:wsdl ref="XYZCustomer/WSDLs/CustomerPS"/>
+                                        <con1:schemaElement xmlns:cus="http://xmlns.xyzbank.com/schema/Customer">cus:Customer</con1:schemaElement>
+                                        <con1:location>
+                                            <con2:xpathText xmlns:con2="http://www.bea.com/wli/sb/stages/config">./cus:Customer</con2:xpathText>
+                                        </con1:location>
+                                    </con1:validate>
+                                </con:action-override>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7ff8">
+                                    <con:actions>
+                                        <con1:ifThenElse xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
+                                            <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57ff9c.N151764ad.0.16c57337807.N7f1c</con2:id>
+                                            <con1:case id="_BranchId-N3f57ff9c.N151764ad.0.16c57337807.N7f1b">
+                                                <con1:condition>
+                                                    <con2:xqueryText xmlns:con2="http://www.bea.com/wli/sb/stages/config">not(fn:matches($body/cus:Customer/Email/text(), '[a-zA-Z0-9]+@[a-zA-Z]+\.[a-z A-Z]{2,3}','i'))</con2:xqueryText>
+                                                </con1:condition>
+                                                <con1:actions>
+                                                    <con1:Error>
+                                                        <con2:id xmlns:con2="http://www.bea.com/wli/sb/stages/config">_ActionId-N3f57ff9c.N151764ad.0.16c57337807.N7ee1</con2:id>
+                                                        <con1:errCode>XYZ-0001</con1:errCode>
+                                                        <con1:message>Email is not valid</con1:message>
+                                                    </con1:Error>
+                                                </con1:actions>
+                                            </con1:case>
+                                        </con1:ifThenElse>
+                                    </con:actions>
+                                </con:placeholder-override>
+                                <con:stage-override id="_StageId-N3f57ff9c.N151764ad.0.16c57337807.N7ffd">
+                                    <con:context>
+                                        <con1:userNsDecl prefix="cus" namespace="http://xmlns.xyzbank.com/schema/Customer" xmlns:con1="http://www.bea.com/wli/sb/stages/config"/>
+                                    </con:context>
+                                </con:stage-override>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f60"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f61"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f5c">
+                                    <con:actions/>
+                                </con:placeholder-override>
+                            </con:template-overrides>
+                        </con:branch>
+                        <con:branch name="UpdateCustomer">
+                            <con:operator>equals</con:operator>
+                            <con:value/>
+                            <con:template-overrides>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7ff8">
+                                    <con:actions/>
+                                </con:placeholder-override>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f60"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f61"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f5c">
+                                    <con:actions/>
+                                </con:placeholder-override>
+                            </con:template-overrides>
+                        </con:branch>
+                        <con:branch name="DeleteCustomer">
+                            <con:operator>equals</con:operator>
+                            <con:value/>
+                            <con:template-overrides>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7ff8">
+                                    <con:actions/>
+                                </con:placeholder-override>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f60"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f61"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f5c">
+                                    <con:actions/>
+                                </con:placeholder-override>
+                            </con:template-overrides>
+                        </con:branch>
+                        <con:branch name="MergeCustomer">
+                            <con:operator>equals</con:operator>
+                            <con:value/>
+                            <con:template-overrides>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7ff8">
+                                    <con:actions/>
+                                </con:placeholder-override>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f60"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f61"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f5c">
+                                    <con:actions/>
+                                </con:placeholder-override>
+                            </con:template-overrides>
+                        </con:branch>
+                        <con:branch name="MigrateCustomer">
+                            <con:operator>equals</con:operator>
+                            <con:value/>
+                            <con:template-overrides>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7ff8">
+                                    <con:actions/>
+                                </con:placeholder-override>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f60"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f61"/>
+                                <con:placeholder-override id="PlaceholderID_N3f57ff9c.N151764ad.0.16c57337807.N7f5c">
+                                    <con:actions/>
+                                </con:placeholder-override>
+                            </con:template-overrides>
+                        </con:branch>
+                        <con:default-branch/>
+                    </con:branch-table>
+                </con:branch-node>
+            </con:template-branch-override>
+        </con:template-overrides>
+    </con:router>
+    <con:template ref="XYZCustomer/Pipelines/CustomerPipelineTemplate"/>
+</con:pipelineEntry>
